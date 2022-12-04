@@ -1,0 +1,144 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Documentation by Alok Ranjan Chaudhary",
+        "version": "1.0.0",
+        "title": "User Fetcher"
+    },
+    "basePath": "/api",
+    "host": "localhost:8080",
+    "paths": {
+        "/user": {
+            "post": {
+                "description": "Enters the form data from user to database",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userData",
+                        "description": "Form data to save to db",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "name",
+                                "phone",
+                                "email"
+                            ],
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Alok Ranjan"
+                                },
+                                "age": {
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "example": 12
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "example": "1231231231"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "alok@ranjan.com"
+                                },
+                                "city": {
+                                    "type": "string",
+                                    "example": "LA"
+                                },
+                                "qualification": {
+                                    "type": "string",
+                                    "example": "Btech"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User's data successfully saved to database."
+                    },
+                    "400": {
+                        "description": "Something went wrong...."
+                    }
+                }
+            }
+        },
+        "/register/admin": {
+            "post": {
+                "description": "Registers and create new admin to user.",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "adminData",
+                        "description": "Admin Details to save to db",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "password",
+                                "email"
+                            ],
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "example": "alok@swagger.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "example": "passFromSwagger"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Admin's data successfully saved to database."
+                    },
+                    "400": {
+                        "description": "Something went wrong...."
+                    }
+                }
+            }
+        },
+        "/login/admin": {
+            "post": {
+                "description": "Admin can see all the users.",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "allData",
+                        "description": "Login and all users details.",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "required": [
+                                "password",
+                                "email"
+                            ],
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "example": "alok@swagger.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "example": "passFromSwagger"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "All users detail fetched."
+                    },
+                    "404": {
+                        "description": "Invalid Creds"
+                    }
+                }
+            }
+        }
+    }
+}
